@@ -14,7 +14,7 @@ except ImportError:
 NAME = 'Orange-Bioinformatics'
 DOCUMENTATION_NAME = 'Orange Bioinformatics'
 
-VERSION = '2.6.10'
+VERSION = '2.6.11'
 
 DESCRIPTION = 'Orange Bioinformatics add-on for Orange data mining software package.'
 LONG_DESCRIPTION = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
@@ -127,7 +127,9 @@ ENTRY_POINTS = {
         'Prototypes = orangecontrib.bio.widgets.prototypes',
     ),
     'orange.canvas.help': (
-        'intersphinx = orangecontrib.bio.widgets:intersphinx',
+        ('intersphinx = orangecontrib.bio.widgets:intersphinx' 
+        if sys.version_info < (3,) else
+        'html-index = orangecontrib.bio.widgets3:WIDGET_HELP_PATH'),
     )
 }
 
